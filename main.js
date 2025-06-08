@@ -1,5 +1,15 @@
 const items = []
 
-const numero = 10
+function addItem() {
+    const itemName = document.querySelector("#item").value
 
-numero = 15
+    const item = {
+        name: itemName,
+        checked: false
+    }
+
+   items.push(item)
+
+    console.log(items)
+
+}
