@@ -132,7 +132,8 @@ main {
      input{
         display: none;
      }
-     input [type="checkbox"] { 
+     input [type="checkbox"] {
+       
         opacity: 0;
         position: absolute;
         width: 1.6rem;
