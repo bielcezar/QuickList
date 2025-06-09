@@ -40,6 +40,16 @@ function removeItem(index) {
     items.splice(index, 1)
     showItemsList()
 
- 
-}
+    const warning = document.querySelector(".warning")
+    warning.classList.remove("hide-warning")
 
+    
+    setTimeout(() => {
+        warning.classList.add("hide-warning")
+    }, 4000)
+
+    if (itemIndex !== -1){
+        items.splice(itemIndex, 1)
+    }
+    showItemsList()
+}
