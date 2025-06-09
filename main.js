@@ -25,8 +25,11 @@ function showItemsList() {
         sectionList.innerHTML += `
       <div class="item">
         <div>
-          <input type="checkbox" name="list" id="item-${index}">
-          <div class="custom-checkbox"></div>
+      <input type="checkbox" name="list" id="item-${index}" ${item.checked ? 'checked' : ''}>
+
+          <div class="custom-checkbox" onclick="checkItem('${item.name}')">
+          <img src="checked.svg" alt="checked">
+          </div>
           <label for="item-${index}">${item.name}</label>
         </div>
         <button onclick="removeItem(${index})">
@@ -37,19 +40,33 @@ function showItemsList() {
 }
 
 function removeItem(index) {
-    items.splice(index, 1)
-    showItemsList()
+   items.splice(index, 1)
+showItemsList()
 
-    const warning = document.querySelector(".warning")
-    warning.classList.remove("hide-warning")
+const warning = document.querySelector(".warning")
+warning.classList.remove("hide-warning")
 
-    
-    setTimeout(() => {
-        warning.classList.add("hide-warning")
-    }, 4000)
+setTimeout(() => {
+    warning.classList.add("hide-warning")
+}, 4000)
+
 
     if (itemIndex !== -1){
         items.splice(itemIndex, 1)
     }
     showItemsList()
+}
+
+function checkItem (itemName) {
+  const item = items.find((item)=> item.name=== itemName)
+
+  if(item.checked=== true){
+    item.checked= false
+  } else {
+    item.checked = true
+  }
+
+  console.log(items)
+  showItemsList()
+
 }
